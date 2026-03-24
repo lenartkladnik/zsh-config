@@ -18,8 +18,9 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 alias rat='/usr/bin/cat'
 alias cat='bat'
 alias ls='lsd'
-alias firmware-setup='systemctl reboot --firmware-setup'
 alias cd='z'
+alias firmware-setup='systemctl reboot --firmware-setup'
+
 alias qFlipper='QT_QPA_PLATFORM=xcb qFlipper'
 alias moebius='moebius --no-sandbox'
 
@@ -40,30 +41,6 @@ bindkey "^[[1;5C" forward-word
 # Suggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Startup 'screen'
-python "/home/lenart/Desktop/Storage/Python/Konsole Start/startup.py"
-
-# After init
-function after_init() {
-    if [[ -z "$AFTER_INIT_SKIP" ]]; then
-        export AFTER_INIT_SKIP=1
-        return
-    fi
-
-    # Commands
-    # Terminal width for startup 'screen' 
-    echo "$(tput cols)" > "/home/lenart/Desktop/Storage/Python/Konsole Start/width.txt"
-}
-
-precmd_functions+=(after_init)
-
-# Handle terminal resize events
-function on_terminal_resize() {
-    clear
-    echo "$(tput cols)" > "/home/lenart/Desktop/Storage/Python/Konsole Start/width.txt"
-    exec zsh
-}
-
 # Evals and exports
 
 export ANDROID_HOME=~/Android/Sdk
@@ -73,12 +50,22 @@ export PATH=$PATH:$ANDROID_HOME/build-tools/
 export PATH=$PATH:$ANDROID_HOME/emulator/
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+if [ $(command -v pyenv) ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init - zsh)"
+fi
+
+if [ $(command -v interact) ]; then
+  eval "$(interact init zsh)"
+fi
+
 eval "$(zoxide init zsh)"
-eval "$(interact init zsh)"
 
 # Options
 
 setopt interactive_comments
+
+# Startup program
+
+ascinfo --config ~/.config/ascinfo/ascinfo.conf

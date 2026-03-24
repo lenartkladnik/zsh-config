@@ -1,6 +1,7 @@
 ## Setup
 - Install [powerlevel10k](https://github.com/romkatv/powerlevel10k/?tab=readme-ov-file#installation)
 - Install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+- Install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - Install [bat](https://github.com/sharkdp/bat?tab=readme-ov-file#installation)
 - Install [zoxide](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation)
 - Install [lsd](https://github.com/lsd-rs/lsd?tab=readme-ov-file#installation)
@@ -11,6 +12,8 @@
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+mkdir -p ~/.zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 sudo pacman -S bat --noconfirm
 sudo pacman -S zoxide --noconfirm
 sudo pacman -S lsd --noconfirm
@@ -24,6 +27,8 @@ curl -fsSL https://raw.githubusercontent.com/lenartkladnik/ascinfo/main/install.
 git clone https://github.com/lenartkladnik/zsh-config ~/.config/zsh-dotfiles
 ln -sf ~/.config/zsh-dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.config/zsh-dotfiles/.p10k.zsh ~/.p10k.zsh
+mkdir -p ~/.config/ascinfo
+ln -sf ~/.config/zsh-dotfiles/ascinfo.conf ~/.config/ascinfo/ascinfo.conf
 exec zsh
 ```
 
