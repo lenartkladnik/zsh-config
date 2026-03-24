@@ -10,7 +10,7 @@
 > Copy paste install for Arch Linux
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-sudo pacman -S zsh-syntax-highlighting --noconfirm
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
 sudo pacman -S bat --noconfirm
 sudo pacman -S zoxide --noconfirm
 sudo pacman -S lsd --noconfirm
