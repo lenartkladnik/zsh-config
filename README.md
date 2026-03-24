@@ -19,7 +19,7 @@ curl -fsSL https://raw.githubusercontent.com/lenartkladnik/ascinfo/main/install.
 ```
 
 
-> Download and setup the configs
+- Download and setup the configs
 ```bash
 git clone https://github.com/lenartkladnik/zsh-config ~/.config/zsh-dotfiles
 ln -sf ~/.config/zsh-dotfiles/.zshrc ~/.zshrc
