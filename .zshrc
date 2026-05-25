@@ -49,6 +49,7 @@ export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/
 export PATH=$PATH:$ANDROID_HOME/build-tools/
 export PATH=$PATH:$ANDROID_HOME/emulator/
 export LIBVIRT_DEFAULT_URI="qemu:///system"
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 if [ $(command -v pyenv) ]; then
   export PYENV_ROOT="$HOME/.pyenv"
